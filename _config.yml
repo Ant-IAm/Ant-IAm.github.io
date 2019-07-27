@@ -52,6 +52,7 @@ plainwhite:
 # - about.md
 
 # Build settings
+theme: minima
 remote_theme: plainwhite
 
 plugins:
