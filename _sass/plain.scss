@@ -36,22 +36,23 @@ a {
 h2 {
 	margin: 0.7em 0;
 }
+
 main {
 	margin: 0 90px;
-	display: flex;
-	height: 100%;
-
+	display: flex 1 1 auto;
+	flex-direction: column;
 	@media screen and (min-width: $bigScreenW) {
 		margin: 0 auto;
-		max-width: 1440px;	
+		//max-width: 1440px;	
+		max-width: 90%;
 	}
-	@media screen and (max-width: 1280px) {
+	//TODO: Removing this to stop snapping during transition. The above percentage seems to work fine.
+	/*@media screen and (max-width: 1280px) {
 		margin: 0 75px;	
 	}
 	@media screen and (max-width: 1024px){
 		margin: 0 35px;	
-	}
-
+	}*/
 	@media screen and (max-width: $mobileW) {
 		margin: 0 10px;
 		flex-direction: column;	
@@ -60,26 +61,18 @@ main {
 		margin: 0;	
 	}
 
-	.content {
-		@media screen and (min-width: $mobileW + 1){
-			max-width: calc(100% - #{$leftWidth});
-			margin-left: $leftWidth;
-		}
-	}
 	.about {
-		//flex: 0 1 auto; /*important*/
-    		
+		order: 1;
 		display: flex;
-		text-overflow: ellipsis;
-		overflow:hidden;
 		height: 100vh;
 		padding-bottom: 15vh;
 		@media screen and (max-width: $mobileW) {
 			height: auto;	
-			padding: 10vh 0;
+			padding-top: 10vh;
 		}
 		@media screen and (min-width: $mobileW + 1) {
-			position: relative;
+			width: 10vw;
+			position: fixed;
 		}
 		min-width: $leftWidth;
 		justify-content: center;
@@ -97,14 +90,20 @@ main {
 			margin-top: 17px;
 			color: #aaa;
 			text-align: center;
-			min-width: 20%;
-			max-width: 90%;
+			max-width: 100%;
 		}
 		img {
 			max-width: 150px;
 		}
 	}
+	.content {
+		order: 2;
+		@media screen and (min-width: $mobileW + 1){
+			margin-left: calc(10vw + #{$leftWidth}/2);
+		}
+	}
 }
+
 .social {
 	list-style-type: none;
 	padding: 0;
