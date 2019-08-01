@@ -32,7 +32,7 @@ plainwhite:
 # - about.md
 
 # Build settings
-#theme: minima
+theme: jekyll-theme-minimal
 remote_theme: plainwhite
 
 plugins:
